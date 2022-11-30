@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row" *ngFor="let factura of facturas">
+      <div class="col mb-2" >
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 col-md-8">
+                <h5 class="card-title">{{ factura.fecha }}</h5>
+              </div>
+              <div class="col-sm">
+                <h5 class="card-title">${{ factura.total }}</h5>
+              </div>
+            </div>
+            <p class="card-text">{{ factura.id }}</p>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +23,8 @@ import { AsesorModule } from './asesor/asesor.module';
     ProductoModule,
     IslaModule,
     ClienteModule,
-    AsesorModule
+    AsesorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
