@@ -6,6 +6,7 @@ import { FacturaComponent } from './factura.component';
   imports: [
     CommonModule
   ],
-  declarations: [FacturaComponent]
+  declarations: [FacturaComponent],
+  exports: [FacturaComponent]
 })
 export class FacturaModule { }
