@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { FacturaModule } from './factura/factura.module';
 import { InventarioModule } from './inventario/inventario.module';
 import { ProductoModule } from './producto/producto.module';
+import { IslaModule } from './isla/isla.module';
+import { ClienteModule } from './cliente/cliente.module';
+import { AsesorModule } from './asesor/asesor.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { ProductoModule } from './producto/producto.module';
     AppRoutingModule,
     FacturaModule,
     InventarioModule,
-    ProductoModule
+    ProductoModule,
+    IslaModule,
+    ClienteModule,
+    AsesorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
