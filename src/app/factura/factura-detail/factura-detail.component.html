@@ -1,20 +1,58 @@
 <div class="container-fluid">
   <div class="col">
-    <div class="row">
-      <h4>Detalles de la venta</h4>
+    <div class="row border-bottom mb-3">
+      <h5 class="my-3">Detalles de la venta</h5>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-8">
+        <h4>{{ factura.fecha }}</h4>
+        <h4>Isla {{ factura.asesor.isla.id }}, {{ factura.asesor.isla.centroComercial }} </h4>
+      </div>
+      <div class="col">
+        <h1>$ {{ factura.total }}</h1>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <p>Número de factura: {{ factura.id }}</p>
+        <p>Asesor comercial: {{ factura.asesor.nombre }} {{ factura.asesor.apellido }}</p>
+        <p>Factura a nombre de: {{ factura.cliente.nombre }} {{ factura.cliente.apellido }}</p>
+      </div>
     </div>
     <div class="row">
-      <h4>{{ factura.fecha }}</h4>
-      <h4>Isla {{ factura.asesor.isla.id }}, {{ factura.asesor.isla.centroComercial }} </h4>
+      <div class="col quarter-height">
+        <table class="table table-secondary table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nombres</th>
+              <th scope="col">Valor unidad</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Aporte</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of factura.factura_detalle">
+              <th scope="row">{{ producto.producto.codigo }}</th>
+              <td>{{ producto.producto.nombre }}</td>
+              <td>{{ producto.producto.valor }}</td>
+              <td>{{ producto.cantidad }}</td>
+              <td>{{ producto.valor }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row justify-content-start align-items-end">
+      <div class="col-sm-4">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+          <label class="btn btn-outline-secondary" for="btnradio1">Eliminar</label>
 
-    </div>
-    <div class="row">
-      <p>Número de factura: {{ factura.id }}</p>
-      <p>Documento de asesor comercial: {{ factura.asesor.nombre }} {{ factura.asesor.apellido }}</p>
-      <p>Documento del cliente: {{ factura.cliente.nombre }} {{ factura.cliente.apellido }}</p>
-    </div>
-    <div class="row">
-      <p>{{ factura.factura_detalle[0].valor }}</p>
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="btnradio2">Editar</label>
+        </div>
+      </div>
     </div>
   </div>
 </div>
