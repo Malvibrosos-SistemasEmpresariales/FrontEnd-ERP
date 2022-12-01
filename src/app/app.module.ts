@@ -10,6 +10,7 @@ import { ProductoModule } from './producto/producto.module';
 import { IslaModule } from './isla/isla.module';
 import { ClienteModule } from './cliente/cliente.module';
 import { AsesorModule } from './asesor/asesor.module';
+import { FacturaRoutingModule } from './factura/factura-routing.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AsesorModule } from './asesor/asesor.module';
     IslaModule,
     ClienteModule,
     AsesorModule,
-    HttpClientModule
+    HttpClientModule,
+    FacturaRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
