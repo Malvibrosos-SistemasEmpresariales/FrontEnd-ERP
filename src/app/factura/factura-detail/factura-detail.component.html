@@ -45,14 +45,22 @@
     </div>
     <div class="row justify-content-start align-items-end">
       <div class="col-sm-4">
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-          <label class="btn btn-outline-secondary" for="btnradio1">Eliminar</label>
-
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-          <label class="btn btn-outline-secondary" for="btnradio2">Editar</label>
-        </div>
+        <a class="btn btn-outline-secondary" (click)="eliminar(content)">Eliminar</a>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">¿Estás seguro?</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<p>Estás a punto de eliminar la factura con número {{ factura.id }}</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-danger" (click)="eliminarConfirmo()">Confirmar</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancelar</button>
+	</div>
+</ng-template>
