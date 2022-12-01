@@ -15,4 +15,12 @@ export class FacturaService {
     return this.http.get<Factura[]>(this.apiUrl);
   }
 
+  getFacturasByDate(date: string): Observable<Factura[]>{
+    return this.http.get<Factura[]>(this.apiUrl + '/date/' + date);
+  }
+
+  getFacturaById(id: number): Observable<Factura>{
+    return this.http.get<Factura>(this.apiUrl + '/' + id);
+  }
+
 }

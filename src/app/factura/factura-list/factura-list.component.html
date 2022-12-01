@@ -1,11 +1,35 @@
 <div class="container-fluid">
-  <div class="row" *ngFor="let factura of facturas">
+  <div class = "row border-bottom mb-3">
+    <div class = "col">
+      <img src="assets/flecha-izquierda.png" class="my-3" alt="flecha-izquierda" width="20" height="20">
+    </div>
+    <div class = "col">
+      <h5 class = "text-center my-3">Ventas</h5>
+    </div>
+    <div class = "col">
+    </div>
+  </div>
+  <div class= "row">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="{{ filtro }}" [disabled]="isFilterNotOn" #Filtro>
+      <button class="btn btn-outline-secondary" type="button" [disabled]="isFilterNotOn" (click)="applyFilter(Filtro.value)">Buscar</button>
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" (click)="changeFilter('Fecha')">Fecha</a></li>
+        <li><a class="dropdown-item" (click)="changeFilter('Factura')">Numero de factura</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" (click)="changeFilter('Filtro')">Limpiar</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col overflow-scroll full-height">
+    <div class="row" *ngFor="let factura of facturas">
       <div class="col mb-2" >
-        <div class="card" style="width: 18rem;">
+        <div class="card w-100" style="width: 18rem;">
           <div class="card-body">
             <div class="row">
               <div class="col-12 col-md-8">
-                <h5 class="card-title">{{ factura.fecha }}</h5>
+                <h4 class="card-title">{{ factura.fecha }}</h4>
               </div>
               <div class="col-sm">
                 <h6 class="card-title">${{ factura.total }}</h6>
@@ -15,5 +39,7 @@
           </div>
         </div>
       </div>
+    </div>
   </div>
+
 </div>

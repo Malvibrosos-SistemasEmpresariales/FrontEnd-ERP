@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Factura } from '../factura';
 
 @Component({
   selector: 'app-factura-detail',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./factura-detail.component.css']
 })
 export class FacturaDetailComponent implements OnInit {
+
+  @Input() factura!: Factura;
 
   constructor() { }
 
