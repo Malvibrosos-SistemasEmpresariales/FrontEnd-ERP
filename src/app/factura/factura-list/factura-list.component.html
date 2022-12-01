@@ -28,7 +28,7 @@
         <div class="col overflow-scroll full-height">
           <div class="row" *ngFor="let factura of facturas">
             <div class="col mb-2" >
-              <div class="card w-100" style="width: 18rem;">
+              <div class="card w-100" style="width: 18rem;" (click)="onSelected(factura)">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-12 col-md-8">
@@ -49,7 +49,10 @@
 
     </div>
     <div class="col-sm-8">
-      <app-factura-detail></app-factura-detail>
+      <div *ngIf="selected">
+        <app-factura-detail [factura]="selectedFactura"></app-factura-detail>
+      </div>
+
     </div>
   </div>
 </div>

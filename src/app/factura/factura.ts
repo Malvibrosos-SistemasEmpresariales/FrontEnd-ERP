@@ -4,7 +4,7 @@ import { Asesor } from '../asesor/asesor';
 
 export class Factura {
   id: number;
-  fecha: any;
+  fecha: any ='2002-01-01';
   total: number;
   cliente: Cliente;
   asesor: Asesor;

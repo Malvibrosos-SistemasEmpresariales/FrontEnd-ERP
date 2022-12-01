@@ -1,3 +1,20 @@
-<p>
-  factura-detail works! TODO: Hacer el detalle XD
-</p>
+<div class="container-fluid">
+  <div class="col">
+    <div class="row">
+      <h4>Detalles de la venta</h4>
+    </div>
+    <div class="row">
+      <h4>{{ factura.fecha }}</h4>
+      <h4>Isla {{ factura.asesor.isla.id }}, {{ factura.asesor.isla.centroComercial }} </h4>
+
+    </div>
+    <div class="row">
+      <p>Número de factura: {{ factura.id }}</p>
+      <p>Documento de asesor comercial: {{ factura.asesor.nombre }} {{ factura.asesor.apellido }}</p>
+      <p>Documento del cliente: {{ factura.cliente.nombre }} {{ factura.cliente.apellido }}</p>
+    </div>
+    <div class="row">
+      <p>{{ factura.factura_detalle[0].valor }}</p>
+    </div>
+  </div>
+</div>

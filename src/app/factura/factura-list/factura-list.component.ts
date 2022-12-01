@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Factura } from '../factura';
+import { FacturaDetail } from '../factura-detail';
 import { FacturaService } from '../factura.service';
 
 @Component({
@@ -9,9 +10,11 @@ import { FacturaService } from '../factura.service';
 })
 export class FacturaListComponent implements OnInit {
 
+  selectedFactura!: FacturaDetail;
+  selected: boolean = false;
   filtro: string = 'Filtro';
   isFilterNotOn: Boolean = true;
-  facturas: Array<Factura> = [];
+  facturas: Array<FacturaDetail> = [];
   constructor(private facturaService: FacturaService) { }
 
   ngOnInit() {
@@ -24,6 +27,13 @@ export class FacturaListComponent implements OnInit {
     if (this.isFilterNotOn){
       this.getFacturas();
     }
+  }
+
+  onSelected(factura: FacturaDetail): void{
+    this.facturaService.getFacturaById(factura.id).subscribe((facturaDetail) =>{
+      this.selectedFactura = facturaDetail;
+      this.selected = true;
+    });
   }
 
   applyFilter(filtro:string): void{
