@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FacturaComponent } from './factura.component';
 import { FacturaListComponent} from './factura-list/factura-list.component';
 import { FacturaDetailComponent } from './factura-detail/factura-detail.component';
 
@@ -8,7 +7,7 @@ import { FacturaDetailComponent } from './factura-detail/factura-detail.componen
   imports: [
     CommonModule
   ],
-  declarations: [FacturaComponent, FacturaListComponent, FacturaDetailComponent],
-  exports: [FacturaComponent, FacturaListComponent, FacturaDetailComponent]
+  declarations: [FacturaListComponent, FacturaDetailComponent],
+  exports: [FacturaListComponent, FacturaDetailComponent]
 })
 export class FacturaModule { }

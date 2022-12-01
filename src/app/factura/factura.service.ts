@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Factura } from './factura';
 import { Observable } from 'rxjs';
+import { FacturaDetail } from './factura-detail';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class FacturaService {
   constructor(private http: HttpClient) { }
   getFacturas(): Observable<Factura[]>{
     return this.http.get<Factura[]>(this.apiUrl);
+  }
+
+  getFacturaDetail(id: number): Observable<FacturaDetail[]>{
+    return this.http.get<FacturaDetail[]>(this.apiUrl + '/detail/' + id);
   }
 
   getFacturasByDate(date: string): Observable<Factura[]>{
