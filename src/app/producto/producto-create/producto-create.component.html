@@ -1,0 +1,129 @@
+
+  <div class="card m-5">
+    <div class="card-header p-3">
+      <p class="h2 text-center">Crear Producto</p>
+    </div>
+    <div class = "card-body m-3">
+    <form class="row g-3"
+      [formGroup]="productoForm"
+      (ngSubmit)="!productoForm.invalid && createProducto(productoForm.value)"
+    >
+
+
+      <div class="col-md-6">
+        <label for="codigo"> Codigo* </label>
+        <input
+          novalidate
+          id="codigo"
+          class="form-control"
+          formControlName="codigo"
+          placeholder="Codigo"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            productoForm.get('codigo').hasError('required') &&
+            productoForm.get('codigo').touched
+          "
+        >
+          Codigo required
+        </div>
+
+      </div>
+
+      <div class ="col-md-6">
+        <label for="nombre"> Nombre* </label>
+        <input
+          id="nombre"
+          type="text"
+          class="form-control"
+          formControlName="nombre"
+          placeholder="Nombre"
+        />
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            productoForm.get('nombre').hasError('required') &&
+            productoForm.get('nombre').touched
+          "
+        >
+          Nombre required
+        </div>
+      </div>
+
+
+      <div class="col-md-3">
+        <label for="valor"> Valor* </label>
+        <input
+          id="valor"
+          type="number"
+          class="form-control"
+          formControlName="valor"
+          placeholder="valor"
+        />
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            productoForm.get('valor').hasError('required') &&
+            productoForm.get('valor').touched
+          "
+        >
+          valor required
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <label for="categoria"> Categoria* </label>
+        <select class="form-control" id="categoria" formControlName="categoria">
+          <option value="HairTools">HairTools</option>
+          <option value="Accessories">Accessories</option>
+          <option value="HairCare">HairCare</option>
+          <option value="SAMacho">SAMacho</option>
+        </select>
+      </div>
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          productoForm.get('categoria').hasError('required') &&
+          productoForm.get('categoria').touched
+        "
+      >
+        Categoria required
+      </div>
+
+      <div class="row m-3 small">
+        <p>* Required fields</p>
+      </div>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button
+          type="submit"
+          class="btn btn-success btn-lg"
+          [disabled]="!productoForm.valid"
+        >
+          Crear
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-danger ml-3 btn-lg"
+          (click)="cancelCreation()"
+        >
+          Cancelar
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-primary btn-lg"
+          (click)="goBack()"
+        >
+          Volver
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
