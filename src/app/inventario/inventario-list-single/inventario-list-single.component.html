@@ -24,7 +24,7 @@
         <h4 class="text">Lista de productos</h4>
       </div>
       <div class="col">
-        <p class="text">Total de unidades: {{ total }}</p>
+        <p class="text">Total de unidades: {{ getTotal() }}</p>
       </div>
     </div>
 
@@ -34,7 +34,6 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">Id</th>
               <th scope="col">Nombre</th>
               <th scope="col">Cantidad</th>
               <th scope="col">isla</th>
@@ -48,7 +47,6 @@
           </thead>
           <tbody>
             <tr *ngFor="let inventario of inventarios">
-              <th scope="row">{{ inventario.id }}</th>
               <td>{{ producto.nombre }}</td>
               <td>{{ inventario.cantidad }}</td>
               <td>{{ inventario.isla.id }}</td>
@@ -56,7 +54,7 @@
               <td>{{ inventario.isla.ciudad }}</td>
               <td>{{ producto.valor }}</td>
               <td>{{ producto.categoria }}</td>
-              <td>{{ getUltimaActualizacion(inventario.id) }}</td>
+              <td>2022-12-02</td>
               <td>
                 <button
                   class="btn btn-outline-secondary"

@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <div>
+          <a class="navbar-brand" >
+            <img
+              src="assets/flecha-izquierda.png"
+              class="my-3"
+              alt="flecha-izquierda"
+              width="20"
+              height="20"
+              (click)="goBack()"
+          /></a>
+        </div>
+      </div>
+      <div class="col-11 my-3">
+        <h2 class="text-center">Añadir inventario</h2>
+      </div>
+    </div>
+    <form [formGroup]="inventarioCreateForm" (ngSubmit)="onSubmit()">
+      <fieldset>
+        <legend>Ingresa los datos del inventario que quieres crear</legend>
+        <div class="mb-3">
+          <label for="cantidad" class="form-label">Cantidad</label>
+          <input type="text" id="cantidad" class="form-control" placeholder="Numero de productos" formControlName="cantidad">
+        </div>
+        <div class="mb-3">
+          <label for="producto" class="form-label">Producto</label>
+          <select id="producto" class="form-select" formControlName="producto" (change) = "updateProducto($any($event.target).value)">
+            <option *ngFor="let producto of productos">{{ producto.nombre }}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="isla" class="form-label">Isla</label>
+          <select id="isla" class="form-select" formControlName="isla" (change) = "updateIsla($any($event.target).value)">
+            <option></option>
+            <option *ngFor="let isla of islas">{{ isla.centroComercial }}</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </fieldset>
+    </form>
+  </div>
+
+</div>

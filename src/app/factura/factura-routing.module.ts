@@ -9,7 +9,7 @@ const routes: Routes = [{
  path: 'facturas',
  children: [
    {
-     path: 'list',
+     path: '',
      component: FacturaListComponent
    },
    {

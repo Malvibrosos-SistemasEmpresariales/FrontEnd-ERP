@@ -17,6 +17,10 @@ export class InventarioService {
     return this.http.get<Inventario[]>(this.apiUrl);
   }
 
+  createInventarios(inventario: Inventario): Observable<Inventario> {
+    return this.http.post<Inventario>(this.apiUrl +"/", inventario);
+  }
+
   getInventarioById(id: number): Observable<Inventario> {
     return this.http.get<Inventario>(this.apiUrl + "/" + id);
   }

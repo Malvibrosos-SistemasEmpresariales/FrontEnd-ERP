@@ -71,7 +71,7 @@ export class InventarioListComponent implements OnInit {
 
   add(): void {
     // Navigate using router to create product
-    this.router.navigate(['productos/crear']);
+    this.router.navigate(['inventarios/create']);
   }
 
   delete(): void {

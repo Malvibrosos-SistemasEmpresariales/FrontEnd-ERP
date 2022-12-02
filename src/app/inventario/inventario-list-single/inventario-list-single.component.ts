@@ -38,11 +38,16 @@ export class InventarioListSingleComponent implements OnInit {
       this.inventarios = this.inventarios.filter(
         (inventario) => inventario.producto.codigo === this.id
       );
+      for (let i = 0; i < this.inventarios.length; i++) {
+        console.log(this.inventarios[i].producto.codigo);
+        this.total += this.inventarios[i].cantidad;
+      }
     });
-    for (let i = 0; i < this.inventarios.length; i++) {
-      console.log(this.inventarios[i].producto.codigo);
-      this.total += this.inventarios[i].cantidad;
-    }
+
+  }
+
+  getTotal(): number {
+    return this.total;
   }
 
   getProducto(): void {
