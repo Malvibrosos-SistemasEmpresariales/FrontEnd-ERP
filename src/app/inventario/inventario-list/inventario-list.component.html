@@ -3,14 +3,17 @@
     <div class="row">
       <div class="col">
         <!-- set the button to go back -->
-        <a class="navbar-brand" routerLink="/home"
-          ><img
-            src="assets/flecha-izquierda.png"
-            class="my-3"
-            alt="flecha-izquierda"
-            width="20"
-            height="20"
-        /></a>
+        <div>
+          <a class="navbar-brand">
+            <img
+              src="assets/flecha-izquierda.png"
+              class="my-3"
+              alt="flecha-izquierda"
+              width="20"
+              height="20"
+              (click)="goBack()"
+          /></a>
+        </div>
       </div>
       <div class="col-11 my-3">
         <h2 class="text-center">Inventario</h2>
@@ -29,7 +32,7 @@
         <button
           class="btn btn-outline-secondary"
           type="button"
-          (click)="changeCategoria('Todos')"
+          (click)="changeCategoria()"
         >
           Todos
         </button>
@@ -52,6 +55,7 @@
             placeholder="Buscar por nombre o id"
             aria-label="Buscar por nombre o id"
             aria-describedby="button-addon2"
+            [(ngModel)]="filtro"
           />
           <div class="input-group-append">
             <button
@@ -99,10 +103,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let inventario of inventarios">
+            <tr *ngFor="let inventario of inventariosVisible">
               <th scope="row">{{ inventario.id }}</th>
-              <td>{{ inventario.producto.nombre }}</td>
+              <!-- the name can bbe clicked to view detail -->
+              <td>
+                <a (click)="goDetail(inventario.producto.codigo)">{{ inventario.producto.nombre }}</a>
+              </td>
               <td>{{ inventario.cantidad }}</td>
+              
               <td>{{ inventario.isla.id }}</td>
               <td>{{ inventario.producto.valor }}</td>
               <td>{{ inventario.producto.categoria }}</td>
@@ -110,12 +118,10 @@
               <td class="text-center">
                 {{ getUltimaActualizacion(inventario.id) }}
               </td>
-
-
-
             </tr>
           </tbody>
         </table>
       </div>
+    </div>
   </div>
 </div>

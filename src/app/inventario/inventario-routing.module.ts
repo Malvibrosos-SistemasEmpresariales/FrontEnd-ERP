@@ -5,17 +5,12 @@ import { InventarioListSingleComponent } from './inventario-list-single/inventar
 
 const routes: Routes = [
   {
-    path: 'inventarios',
-    children: [
-      {
-        path: 'list',
-        component: InventarioListComponent,
-      },
-      {
-        path: ':id',
-        component: InventarioListSingleComponent,
-      },
-    ],
+    path: 'inventarios/',
+    component: InventarioListComponent,
+  },
+  {
+    path: 'inventarios/:id',
+    component: InventarioListSingleComponent,
   },
 ];
 

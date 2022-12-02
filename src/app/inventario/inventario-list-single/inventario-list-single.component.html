@@ -1,1 +1,75 @@
-<p>inventario-list-single works!</p>
+<div class="container-fluid">
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <!-- set the button to go back -->
+        <div>
+          <a class="navbar-brand">
+            <img
+              src="assets/flecha-izquierda.png"
+              class="my-3"
+              alt="flecha-izquierda"
+              width="20"
+              height="20"
+              (click)="goBack()"
+          /></a>
+        </div>
+      </div>
+      <div class="col-11 my-3">
+        <h2 class="text-center">Inventario de: {{ producto.codigo }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h4 class="text">Lista de productos</h4>
+      </div>
+      <div class="col">
+        <p class="text">Total de unidades: {{ total }}</p>
+      </div>
+    </div>
+
+    <!-- table -->
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">isla</th>
+              <th scope="col">CC</th>
+              <th scope="col">Ciudad</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Última Actualiz.</th>
+              <th scope="col">Editar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let inventario of inventarios">
+              <th scope="row">{{ inventario.id }}</th>
+              <td>{{ producto.nombre }}</td>
+              <td>{{ inventario.cantidad }}</td>
+              <td>{{ inventario.isla.id }}</td>
+              <td>{{ inventario.isla.centroComercial }}</td>
+              <td>{{ inventario.isla.ciudad }}</td>
+              <td>{{ producto.valor }}</td>
+              <td>{{ producto.categoria }}</td>
+              <td>{{ getUltimaActualizacion(inventario.id) }}</td>
+              <td>
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  (click)="editInventario(inventario.id)"
+                >
+                  Editar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

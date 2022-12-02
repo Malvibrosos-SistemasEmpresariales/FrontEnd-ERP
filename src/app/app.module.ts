@@ -12,9 +12,10 @@ import { ClienteModule } from './cliente/cliente.module';
 import { AsesorModule } from './asesor/asesor.module';
 import { FacturaRoutingModule } from './factura/factura-routing.module';
 import { HomeComponent } from './home/home.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
       HomeComponent
    ],
@@ -28,7 +29,9 @@ import { HomeComponent } from './home/home.component';
     ClienteModule,
     AsesorModule,
     HttpClientModule,
-    FacturaRoutingModule
+    FacturaRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

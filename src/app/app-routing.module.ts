@@ -4,6 +4,8 @@ import { FacturaListComponent } from './factura/factura-list/factura-list.compon
 import { InventarioListComponent } from './inventario/inventario-list/inventario-list.component';
 import { HomeComponent } from './home/home.component';
 import { ProductoCreateComponent } from './producto/producto-create/producto-create.component';
+import { InventarioRoutingModule } from './inventario/inventario-routing.module';
+import { FacturaRoutingModule } from './factura/factura-routing.module';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -14,7 +16,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),
+    InventarioRoutingModule,
+    FacturaRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

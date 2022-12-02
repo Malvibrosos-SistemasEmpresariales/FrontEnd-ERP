@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Inventario } from '../inventario';
 import { InventarioMovimientos } from '../inventario-movimientos';
 import { InventarioService } from '../inventario.service';
@@ -16,7 +17,7 @@ export class InventarioListComponent implements OnInit {
   total = 0;
   filtro = '';
 
-  constructor(private inventarioService: InventarioService) {}
+  constructor(private inventarioService: InventarioService, private router: Router) {}
 
   ngOnInit(): void {
     this.getInventarioMovimientos();
@@ -40,14 +41,15 @@ export class InventarioListComponent implements OnInit {
     });
   }
 
-  changeCategoria(categoria: string): void {
-    if (categoria === 'Todas') {
-      this.inventariosVisible = this.inventarios;
-    } else {
+  changeCategoria(categoria?: string): void {
+    if (categoria) {
       this.inventariosVisible = this.inventarios.filter(
         (inventario) => inventario.producto.categoria === categoria
       );
+    } else {
+      this.inventariosVisible = this.inventarios;
     }
+    this.total = this.inventariosVisible.length;
   }
 
   search(): void {
@@ -63,10 +65,13 @@ export class InventarioListComponent implements OnInit {
           .toLowerCase()
           .includes(this.filtro.toLowerCase())
     );
+    // refresh the table after filtering
+    this.total = this.inventariosVisible.length;
   }
 
   add(): void {
-    // Navigate to create product
+    // Navigate using router to create product
+    this.router.navigate(['productos/crear']);
   }
 
   delete(): void {
@@ -83,4 +88,14 @@ export class InventarioListComponent implements OnInit {
     }
   }
 
+  goBack(): void {
+    this.router.navigate(['/home']);
+  }
+
+  goDetail(id: string): void {
+    // show all posible routes
+    console.log(this.router.config);
+    // Navigate using router to detail product
+    this.router.navigate([`/inventarios/${id}`]);
+  }
 }
