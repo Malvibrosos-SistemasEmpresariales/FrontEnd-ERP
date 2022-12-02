@@ -11,10 +11,12 @@ import { IslaModule } from './isla/isla.module';
 import { ClienteModule } from './cliente/cliente.module';
 import { AsesorModule } from './asesor/asesor.module';
 import { FacturaRoutingModule } from './factura/factura-routing.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
+  declarations: [	
+    AppComponent,
+      HomeComponent
    ],
   imports: [
     BrowserModule,
