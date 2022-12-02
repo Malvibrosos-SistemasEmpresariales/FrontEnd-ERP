@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Factura } from './factura';
 import { Observable } from 'rxjs';
 import { FacturaDetail } from './factura-detail';
 
@@ -26,6 +25,10 @@ export class FacturaService {
 
   deleteFactura(id: number): Observable<string>{
     return this.http.delete<string>(this.apiUrl + '/' + id);
+  }
+
+  createFactura(factura: FacturaDetail): Observable<FacturaDetail>{
+    return this.http.post<FacturaDetail>(this.apiUrl +'/', factura);
   }
 
 }
