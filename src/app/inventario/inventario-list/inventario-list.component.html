@@ -1,0 +1,121 @@
+<div class="container-fluid">
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <!-- set the button to go back -->
+        <a class="navbar-brand" routerLink="/home"
+          ><img
+            src="assets/flecha-izquierda.png"
+            class="my-3"
+            alt="flecha-izquierda"
+            width="20"
+            height="20"
+        /></a>
+      </div>
+      <div class="col-11 my-3">
+        <h2 class="text-center">Inventario</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h4 class="text">Lista de productos</h4>
+      </div>
+      <div class="col">
+        <p class="text">Total de productos: {{ total }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="changeCategoria('Todos')"
+        >
+          Todos
+        </button>
+        <button
+          *ngFor="let categoria of categorias"
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="changeCategoria(categoria)"
+        >
+          {{ categoria }}
+        </button>
+      </div>
+
+      <!-- search bar for id and name -->
+      <div class="col-5">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Buscar por nombre o id"
+            aria-label="Buscar por nombre o id"
+            aria-describedby="button-addon2"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="button-addon2"
+              (click)="search()"
+            >
+              Buscar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <button class="btn btn-outline-secondary" type="button" (click)="add()">
+          + producto
+        </button>
+      </div>
+      <div class="col col-2">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="delete()"
+        >
+          - producto
+        </button>
+      </div>
+    </div>
+
+    <!-- table -->
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">isla</th>
+              <th scope="col">Precio</th>
+              <th scope="col">categoria</th>
+              <th scope="col">Última Actualiz.</th>
+              <th scope="col">Editar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let inventario of inventarios">
+              <th scope="row">{{ inventario.id }}</th>
+              <td>{{ inventario.producto.nombre }}</td>
+              <td>{{ inventario.cantidad }}</td>
+              <td>{{ inventario.isla.id }}</td>
+              <td>{{ inventario.producto.valor }}</td>
+              <td>{{ inventario.producto.categoria }}</td>
+              <!-- use getUltimaActualizacion for last date -->
+              <td class="text-center">
+                {{ getUltimaActualizacion(inventario.id) }}
+              </td>
+
+
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
